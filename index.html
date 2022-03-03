@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Speed Reading Test</title>
+	<link rel="stylesheet" type="text/css" href="layout.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
+	<link rel="icon" type="image/x-icon" href="fav.png">
+</head>
+<body onload="return_navigation()">
+
+	<header>
+		<div class="container header">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<h1><img src="fav.png" title="Speed Reading Test" alt="Speed Reading Test" /> Speed Reading Test <button class="btn btn-primary" id="backbtn" onclick="return_navigation()">Back</button></h1>
+					<p><small>Source: <strong><a href="https://github.com/amirshnll/speed-reading-test" title="amirshnll/speed-reading-test" target="_blank">amirshnll/speed-reading-test</a></strong></small></p>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="container main-body" id="mainbodysection">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="d-flex align-items-start">
+						<div class="nav flex-column nav-pills me-3 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+							<button class="nav-link active" id="v-read-passage-tab" data-bs-toggle="pill" data-bs-target="#v-read-passage" type="button" role="tab" aria-controls="v-read-passage" aria-selected="true">Read Passage</button>
+							<button class="nav-link" id="v-word-recognition-tab" data-bs-toggle="pill" data-bs-target="#v-word-recognition" type="button" role="tab" aria-controls="v-word-recognition" aria-selected="false">Word Recognition</button>
+						</div>
+						<div class="tab-content form-group col-xl-10 col-lg-10 col-md-10 col-sm-9 col-7" id="v-pills-tabContent">
+							<div class="tab-pane fade show active" id="v-read-passage" role="tabpanel" aria-labelledby="v-read-passage-tab">
+								<h2>Read Passage</h2>
+								<p><strong>Text:</strong> <small>You can change this passage for reading.</small></p>
+								<textarea required="require" class="form-control passageread w-100" rows="10" id="passageread">Artificial intelligence is intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans. Leading AI textbooks define the field as the study of "intelligent agents": any system that perceives its environment and takes actions that maximize its chance of achieving its goals. Some popular accounts use the term "artificial intelligence" to describe machines that mimic "cognitive" functions that humans associate with the human mind, such as "learning" and "problem solving", however, this definition is rejected by major AI researchers. AI applications include advanced web search engines, recommendation systems, understanding human speech, self-driving cars, automated decision-making and competing at the highest level in strategic game systems. As machines become increasingly capable, tasks considered to require "intelligence" are often removed from the definition of AI, a phenomenon known as the AI effect. For instance, optical character recognition is frequently excluded from things considered to be AI, having become a routine technology. Artificial intelligence was founded as an academic discipline in 1956, and in the years since has experienced several waves of optimism, followed by disappointment and the loss of funding, followed by new approaches, success and renewed funding. AI research has tried and discarded many different approaches since its founding, including simulating the brain, modeling human problem solving, formal logic, large databases of knowledge and imitating animal behavior. In the first decades of the 21st century, highly mathematical statistical machine learning has dominated the field, and this technique has proved highly successful, helping to solve many challenging problems throughout industry and academia.</textarea>
+								<p></p>
+								<p><button class="btn btn-primary" onclick="start_reading()">Start Reading</button></p>
+								<p></p>
+								<p class="alert alert-primary">You should read top passage.</p>
+								<p class="alert alert-primary">People can read 200/250 words per second.</p>
+							</div>
+							<div class="tab-pane fade" id="v-word-recognition" role="tabpanel" aria-labelledby="v-word-recognition">
+								<h2>Word Recognition</h2>
+								<p><strong>Text:</strong> <small>You can change this passage for recognizing.</small></p>
+								<textarea required="require" class="form-control passagerecognize w-100" rows="10" id="passagerecognize">A programming language is any set of rules that converts strings, or graphical program elements in the case of visual programming languages, to various kinds of machine code output. Programming languages are one kind of computer language, and are used in computer programming to implement algorithms. Most programming languages consist of instructions for computers. There are programmable machines that use a set of specific instructions, rather than general programming languages. Since the early 1800s, programs have been used to direct the behavior of machines such as Jacquard looms, music boxes and player pianos. The programs for these machines did not produce different behavior in response to different inputs or conditions.</textarea>
+								<p></p>
+								<p><strong>Word show time: (milisecond)</strong></p>
+								<input value="1000" type="text" required="require" name="wordtime" class="form-control" id="wordtime" />
+								<p></p>
+								<p><button class="btn btn-primary" onclick="start_recognizing()">Start Recognizing</button></p>
+								<p></p>
+								<p class="alert alert-primary">You can change speed of word show.</p>
+								<p class="alert alert-primary">You should recognitizing word from top passage, and couting words.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container main-reading" id="mainreadingsection">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<p class="textreadingparagraph" id="textreading"></p>
+					<p><button class="btn btn-primary" onclick="endreading()">End</button></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container main-recognizing" id="mainrecognizingsection">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<p class="textreconitionparagraph" id="wordrecognizing"></p>
+					<p class="text-center"><button class="btn btn-primary" onclick="endreading()">End</button></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container main-recognizing" id="oversection">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<p>&nbsp;</p>
+					<h3 class="display-4 text-center">Over</h3>
+					<p id="overtimevalue" class="overtimevalue text-center">-</p>
+					<p class="text-center"><button class="btn btn-primary m-auto text-center" id="backbtn" onclick="return_navigation()">Start Again</button></p>
+					<p>&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<input type="hidden" value="0" id="starttime" />
+	<script src="app.js"></script>
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
